@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AddContact = (props) => {
 const [contact, setContact] = useState({name:"", email:""})
+let history = useNavigate();
 const handleChange = (e) =>{
     setContact({...contact, [e.target.name]:e.target.value})
 }
@@ -14,6 +16,8 @@ const add = (e) => {
     }
     props.addContactHandler(contact);
     setContact({name:"", email:""});
+    console.log(props)
+    history("/");
 }
   return (
     <div className='ui main'>
